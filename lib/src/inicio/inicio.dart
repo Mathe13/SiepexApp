@@ -45,7 +45,7 @@ class InicioPage extends StatelessWidget {
                 itemButton(
                     new GridItem('Apresentadores', 'palestrantes', Icons.group),
                     context),
-                itemButton(new GridItem('Hoteis', '404', Icons.map), context)
+                itemButton(new GridItem('Hoteis', 'hoteis', Icons.map), context)
               ],
             ),
             Padding(
@@ -53,7 +53,9 @@ class InicioPage extends StatelessWidget {
             ),
             Row(
               children: <Widget>[
-                itemButton(new GridItem('Restaurantes', '404', Icons.fastfood),
+                itemButton(
+                    new GridItem(
+                        'Restaurantes', 'restaurantes', Icons.fastfood),
                     context),
                 itemButton(
                     new GridItem('Informações úteis', '404', Icons.warning),

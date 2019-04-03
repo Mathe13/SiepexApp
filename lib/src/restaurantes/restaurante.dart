@@ -1,0 +1,22 @@
+// https://www.google.com.br/maps/search/comida/@-30.0784113,-51.1507375,13z
+import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+
+class RestaurantesPage extends StatelessWidget {
+  final Widget child;
+
+  RestaurantesPage({Key key, this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Restaurantes"),
+      ),
+      body: WebviewScaffold(
+        url:
+            'https://www.google.com.br/maps/search/comida/@-30.0784113,-51.1507375,13z',
+      ),
+    );
+  }
+}
