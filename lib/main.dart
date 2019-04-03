@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siepex/src/agenda/agenda.dart';
+import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/inicio/inicio.dart';
 import 'package:siepex/src/notfound.dart';
 import 'package:siepex/src/palestrantes/palestrantes.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'inicio',
       routes: <String, WidgetBuilder>{
         'tabs': (BuildContext context) => TabsPage(),
+        'eventos': (BuildContext context) => EventosPage(),
         'agenda': (BuildContext context) => AgendaPage(),
         'sobre': (BuildContext context) => SobrePage(),
         'palestrantes': (BuildContext context) => PalestrantesPage(),

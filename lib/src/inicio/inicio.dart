@@ -23,17 +23,7 @@ class InicioPage extends StatelessWidget {
           title: Text('Inicio'),
         ),
         body: Container(
-            // decoration: ShapeDecoration(
-            //   shape: BeveledRectangleBorder(),
-            // ),
-            // decoration: new BoxDecoration(
-            //   shape: BoxShape.circle,
-            //   border: new Border.all(
-            //     color: Colors.black,
-            //     width: 1.0,
-            //   ),
-            // ),
-            child: Column(
+            child: ListView(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(30),
@@ -41,11 +31,10 @@ class InicioPage extends StatelessWidget {
             Row(
               children: <Widget>[
                 itemButton(
-                    new GridItem(
-                        'Agenda do evento', 'agenda', Icons.calendar_today),
+                    new GridItem('Agenda', 'eventos', Icons.calendar_today),
                     context),
-                itemButton(
-                    new GridItem('Sobre o Siepx', 'sobre', Icons.info), context)
+                itemButton(new GridItem('Sobre o Siepex', 'sobre', Icons.info),
+                    context)
               ],
             ),
             Padding(
@@ -54,8 +43,7 @@ class InicioPage extends StatelessWidget {
             Row(
               children: <Widget>[
                 itemButton(
-                    new GridItem(
-                        'Palestrantes do ano', 'palestrantes', Icons.group),
+                    new GridItem('Apresentadores', 'palestrantes', Icons.group),
                     context),
                 itemButton(new GridItem('Hoteis', '404', Icons.map), context)
               ],
@@ -69,6 +57,20 @@ class InicioPage extends StatelessWidget {
                     context),
                 itemButton(
                     new GridItem('Informações úteis', '404', Icons.warning),
+                    context)
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+            ),
+            Row(
+              children: <Widget>[
+                itemButton(
+                    new GridItem('Organização', '404', Icons.business_center),
+                    context),
+                itemButton(
+                    new GridItem(
+                        'Área do Participante', '404', Icons.assignment_ind),
                     context)
               ],
             )

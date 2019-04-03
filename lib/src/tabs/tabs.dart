@@ -13,11 +13,7 @@ class TabsPage extends StatefulWidget {
 }
 
 class _TabsPageState extends State<TabsPage> {
-  final List<String> titulos = [
-    'Programação do evento',
-    'Palestrantes do ano',
-    'Sobre o evento'
-  ];
+  final List<String> titulos = ['Agenda', 'Palestrantes', 'Sobre o evento'];
   final _widgetOptions = [
     AgendaPage(),
     PalestrantesPage(),

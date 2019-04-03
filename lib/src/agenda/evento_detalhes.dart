@@ -118,10 +118,10 @@ class _EventoDetalhesState extends State<EventoDetalhes> {
                                     fit: BoxFit.cover,
                                     image: new NetworkImage(
                                         "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
-                        Text(
-                          'Autor da palestra',
-                          textAlign: TextAlign.center,
-                        )
+                        // Text(
+                        //   'Autor da palestra',
+                        //   textAlign: TextAlign.center,
+                        // )
                       ],
                     )),
                 Expanded(
@@ -129,8 +129,8 @@ class _EventoDetalhesState extends State<EventoDetalhes> {
                   child: Container(
                       margin: EdgeInsets.only(top: 0),
                       child: ListTile(
-                        title: Text('Uma palestra bacana e complexa'),
-                        subtitle: Text('00:00-00:30\nPalco tal'),
+                        title: Text('Nome do palestrante'),
+                        subtitle: Text('n palestras'),
                       )),
                 )
               ],

@@ -44,7 +44,7 @@ flutter:
   assets:
     - assets/img/download.jpeg
     - assets/img/logo_uergs.png
-
+    - assets/img/Untitled.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

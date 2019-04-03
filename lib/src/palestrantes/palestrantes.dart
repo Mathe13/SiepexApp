@@ -94,25 +94,34 @@ Widget palestrantesList(BuildContext context) {
 }
 
 Widget palestranteLinha(Palestrante palestrante, BuildContext context) {
-  return Container(
-    child: Row(
-      children: <Widget>[
-        Container(
-            margin: EdgeInsets.only(left: 10, right: 5, top: 3, bottom: 3),
-            width: 40,
-            height: 40,
-            decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                    fit: BoxFit.fill,
-                    image: new NetworkImage(
-                        "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
-        Text('um nome')
-      ],
-    ),
-    decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.grey[600]))),
-  );
+  return new GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PaletranteDetalhesPage(
+                      palestrante: new Palestrante(),
+                    )));
+      },
+      child: Container(
+        child: Row(
+          children: <Widget>[
+            Container(
+                margin: EdgeInsets.only(left: 10, right: 5, top: 3, bottom: 3),
+                width: 40,
+                height: 40,
+                decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: new DecorationImage(
+                        fit: BoxFit.fill,
+                        image: new NetworkImage(
+                            "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
+            Text('um nome')
+          ],
+        ),
+        decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey[600]))),
+      ));
 }
 
 Widget honrados(BuildContext context) {
