@@ -45,13 +45,20 @@ class _EventosPageState extends State<EventosPage> {
               Positioned(
                 bottom: 0,
                 right: 0,
-                child: Container(
-                  child: Text(
-                    'Evento',
-                    style: TextStyle(color: Colors.black, fontSize: 40),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                child: Opacity(
+                    opacity: 0.7,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.black,
+                      child: Text(
+                        'Evento',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )),
               )
             ],
           )),

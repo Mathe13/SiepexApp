@@ -25,8 +25,9 @@ class InicioPage extends StatelessWidget {
         body: Container(
             child: ListView(
           children: <Widget>[
+            Image.asset('assets/img/logo_uergs.png'),
             Padding(
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.all(15),
             ),
             Row(
               children: <Widget>[
@@ -34,25 +35,19 @@ class InicioPage extends StatelessWidget {
                     new GridItem('Agenda', 'eventos', Icons.calendar_today),
                     context),
                 itemButton(new GridItem('Sobre o Siepex', 'sobre', Icons.info),
+                    context),
+                itemButton(
+                    new GridItem('Apresentadores', 'palestrantes', Icons.group),
                     context)
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(15),
             ),
             Row(
               children: <Widget>[
                 itemButton(
-                    new GridItem('Apresentadores', 'palestrantes', Icons.group),
-                    context),
-                itemButton(new GridItem('Hoteis', 'hoteis', Icons.map), context)
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.all(20),
-            ),
-            Row(
-              children: <Widget>[
+                    new GridItem('Hoteis', 'hoteis', Icons.map), context),
                 itemButton(
                     new GridItem(
                         'Restaurantes', 'restaurantes', Icons.fastfood),
@@ -63,7 +58,7 @@ class InicioPage extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(15),
             ),
             Row(
               children: <Widget>[
@@ -82,20 +77,29 @@ class InicioPage extends StatelessWidget {
 
   Widget itemButton(GridItem item, BuildContext context) {
     return Expanded(
+        flex: 1,
         child: FlatButton(
-      onPressed: () {
-        Navigator.pushNamed(context, item.rota);
-      },
-      child: Column(
-        children: <Widget>[
-          Icon(
-            item.icone,
-            size: 100,
-            color: Colors.green[400],
-          ),
-          Text(item.nome)
-        ],
-      ),
-    ));
+          onPressed: () {
+            Navigator.pushNamed(context, item.rota);
+          },
+          child: Container(
+              decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30))),
+              child: Column(
+                children: <Widget>[
+                  Icon(
+                    item.icone,
+                    size: 70,
+                    color: Colors.green[400],
+                  ),
+                  Text(
+                    item.nome,
+                    style: TextStyle(fontSize: 11),
+                    softWrap: true,
+                  )
+                ],
+              )),
+        ));
   }
 }
