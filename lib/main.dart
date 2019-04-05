@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:siepex/src/agenda/agenda.dart';
 import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/hoteis/hoteis.dart';
+import 'package:siepex/src/info/info.dart';
 import 'package:siepex/src/inicio/inicio.dart';
 import 'package:siepex/src/notfound.dart';
 import 'package:siepex/src/palestrantes/palestrantes.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         'inicio': (BuildContext context) => InicioPage(),
         'hoteis': (BuildContext context) => HoteisPage(),
         'restaurantes': (BuildContext context) => RestaurantesPage(),
+        'info': (BuildContext context) => InfoPage(),
         '404': (BuildContext context) => NotFoundPage(),
       },
       title: 'WebAr',

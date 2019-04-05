@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-
-class GridItem {
-  String nome;
-  String rota;
-  IconData icone;
-  GridItem(this.nome, this.rota, this.icone);
-}
+import 'package:siepex/src/inicio/itemButton.dart';
+import 'package:siepex/mdi.dart';
 
 class InicioPage extends StatelessWidget {
   final Widget child;
@@ -53,7 +48,7 @@ class InicioPage extends StatelessWidget {
                         'Restaurantes', 'restaurantes', Icons.fastfood),
                     context),
                 itemButton(
-                    new GridItem('Informações úteis', '404', Icons.warning),
+                    new GridItem('Informações úteis', 'info', Icons.warning),
                     context)
               ],
             ),
@@ -68,38 +63,13 @@ class InicioPage extends StatelessWidget {
                 itemButton(
                     new GridItem(
                         'Área do Participante', '404', Icons.assignment_ind),
+                    context),
+                itemButton(
+                    new GridItem('Mapa do evento', '404', Mdi.map_marker),
                     context)
               ],
             )
           ],
         )));
-  }
-
-  Widget itemButton(GridItem item, BuildContext context) {
-    return Expanded(
-        flex: 1,
-        child: FlatButton(
-          onPressed: () {
-            Navigator.pushNamed(context, item.rota);
-          },
-          child: Container(
-              decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30))),
-              child: Column(
-                children: <Widget>[
-                  Icon(
-                    item.icone,
-                    size: 70,
-                    color: Colors.green[400],
-                  ),
-                  Text(
-                    item.nome,
-                    style: TextStyle(fontSize: 11),
-                    softWrap: true,
-                  )
-                ],
-              )),
-        ));
   }
 }

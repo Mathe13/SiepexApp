@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  url_launcher: ^5.0.2
+  material_design_icons_flutter: ^3.2.3595
   flutter_webview_plugin: 0.3.3
   flutter_test:
     sdk: flutter
@@ -49,6 +51,11 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
+
+  fonts:
+    - family: Mdi
+      fonts:
+        - asset: assets/fonts/Mdi.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -61,7 +68,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Mdi
+  #     fonts:
+  #       - asset: assets/fonts/Mdi.ttf
+  # #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
