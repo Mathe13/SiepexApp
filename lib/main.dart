@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:siepex/src/agenda/agenda.dart';
+import 'package:siepex/src/areaParticipante/alimentacao/alimentacao.dart';
+import 'package:siepex/src/areaParticipante/homeParticipante.dart';
+import 'package:siepex/src/areaParticipante/qr.dart';
 import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/hoteis/hoteis.dart';
 import 'package:siepex/src/info/info.dart';
@@ -28,7 +31,10 @@ class MyApp extends StatelessWidget {
         'hoteis': (BuildContext context) => HoteisPage(),
         'restaurantes': (BuildContext context) => RestaurantesPage(),
         'info': (BuildContext context) => InfoPage(),
+        'homeParticipante': (BuildContext context) => HomeParticipante(),
+        'qr': (BuildContext context) => QrPage(),
         '404': (BuildContext context) => NotFoundPage(),
+        'alimentacao': (BuildContext context) => AlimentacaoPage(),
       },
       title: 'WebAr',
       theme: ThemeData(
@@ -38,7 +44,7 @@ class MyApp extends StatelessWidget {
         //   TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         // }),
       ),
-      home: TabsPage(),
+      // home: TabsPage(),
     );
   }
 }

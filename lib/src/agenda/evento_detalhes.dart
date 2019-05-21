@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:siepex/models/evento.dart';
 import 'package:siepex/models/palestrante.dart';
-import 'package:siepex/src/agenda/evento_card.dart';
 
 class EventoDetalhes extends StatefulWidget {
   final Widget child;

@@ -26,6 +26,7 @@ dependencies:
 
 dev_dependencies:
   url_launcher: ^5.0.2
+  barcode_scan: ^0.0.3
   material_design_icons_flutter: ^3.2.3595
   flutter_webview_plugin: 0.3.3
   flutter_test:

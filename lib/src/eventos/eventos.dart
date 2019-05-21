@@ -18,16 +18,16 @@ class _EventosPageState extends State<EventosPage> {
         ),
         body: ListView(
           children: <Widget>[
-            eventoBanner(),
-            eventoBanner(),
-            eventoBanner(),
+            eventoBanner('Minicursos'),
+            eventoBanner('Visitas Técnicas'),
+            eventoBanner('Científica'),
           ],
         ),
       ),
     );
   }
 
-  Widget eventoBanner() {
+  Widget eventoBanner(String title) {
     return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, 'agenda');
@@ -51,10 +51,10 @@ class _EventosPageState extends State<EventosPage> {
                       width: MediaQuery.of(context).size.width,
                       color: Colors.black,
                       child: Text(
-                        'Evento',
+                        title,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 40,
+                          fontSize: 35,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -66,7 +66,7 @@ class _EventosPageState extends State<EventosPage> {
             side: BorderSide(color: Colors.green, style: BorderStyle.solid),
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
-          elevation: 5,
+          elevation: 200,
           margin: EdgeInsets.all(10),
         ));
   }

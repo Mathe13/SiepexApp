@@ -14,7 +14,7 @@ class HoteisPage extends StatelessWidget {
       ),
       body: WebviewScaffold(
         url:
-            'https://www.google.com.br/maps/search/hoteis/@-30.0769777,-51.1315835,14z/data=!3m1!4b1',
+            'https://www.google.com.br/maps/search/UERGS+-+Campus+Central+hoteis+proximos/@-30.0773739,-51.1561728,12.75z',
       ),
     );
   }

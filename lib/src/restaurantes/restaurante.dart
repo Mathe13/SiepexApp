@@ -15,7 +15,7 @@ class RestaurantesPage extends StatelessWidget {
       ),
       body: WebviewScaffold(
         url:
-            'https://www.google.com.br/maps/search/comida/@-30.0784113,-51.1507375,13z',
+            'https://www.google.com.br/maps/search/UERGS+-+Campus+Central+restaurantes/@-30.0773608,-51.1561728,12z/data=!3m1!4b1z',
       ),
     );
   }

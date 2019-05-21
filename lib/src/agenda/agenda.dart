@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:siepex/src/agenda/agenda_dia.dart';
-import 'package:siepex/src/agenda/evento_button.dart';
 
 class AgendaPage extends StatefulWidget {
   final Widget child;
