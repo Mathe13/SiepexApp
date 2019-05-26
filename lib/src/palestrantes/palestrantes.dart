@@ -26,7 +26,12 @@ class _PalestrantesPageState extends State<PalestrantesPage> {
           ],
         ),
         body: Container(
-          margin: EdgeInsets.only(top: 20),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                      'assets/img/arte_uergs/Background_App_Siepex.png'),
+                  fit: BoxFit.fill)),
+          // margin: EdgeInsets.only(top: 20),
           child: Column(
             children: <Widget>[
               Row(
@@ -34,14 +39,13 @@ class _PalestrantesPageState extends State<PalestrantesPage> {
                   Text(
                     'Principais palestrantes',
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 17, color: Colors.grey[600]),
+                    style: TextStyle(fontSize: 17),
                   ),
                 ],
               ),
               Padding(
                 padding: EdgeInsets.all(7),
               ),
-
               Expanded(
                 flex: 1,
                 child: honrados(context),
@@ -54,7 +58,7 @@ class _PalestrantesPageState extends State<PalestrantesPage> {
                   Text(
                     'Palestrantes',
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 17, color: Colors.grey[600]),
+                    style: TextStyle(fontSize: 17),
                   ),
                 ],
               ),
@@ -62,10 +66,6 @@ class _PalestrantesPageState extends State<PalestrantesPage> {
                 flex: 3,
                 child: palestrantesList(context),
               ),
-
-              // Expanded(
-              //   child: palestrantesList(),
-              // )
             ],
           ),
         ));

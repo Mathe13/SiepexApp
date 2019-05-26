@@ -21,12 +21,12 @@ Widget itemButton(GridItem item, BuildContext context, {bool expanded = true}) {
             Icon(
               item.icone,
               size: 70,
-              color: Colors.green[400],
+              color: Colors.white,
             ),
             Text(
               item.nome,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 11),
+              style: TextStyle(fontSize: 11, color: Colors.white),
               softWrap: true,
             )
           ],

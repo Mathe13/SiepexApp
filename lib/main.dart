@@ -38,8 +38,11 @@ class MyApp extends StatelessWidget {
       },
       title: 'WebAr',
       theme: ThemeData(
+        textSelectionColor: Colors.white,
         primaryColor: Color(0xff055E3E),
-        backgroundColor: Colors.green[30],
+        primaryTextTheme: Typography(platform: TargetPlatform.iOS).white,
+        textTheme: Typography(platform: TargetPlatform.iOS).white,
+        // backgroundColor: Colors.green[30],
         // pageTransitionsTheme: PageTransitionsTheme(builders: {
         //   TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         // }),

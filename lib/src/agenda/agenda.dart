@@ -27,13 +27,14 @@ class _AgendaPageState extends State<AgendaPage> {
             ],
             bottom: tabs(),
           ),
-          body: TabBarView(
+          body: Container(
+              child: TabBarView(
             children: <Widget>[
               AgendaDia(),
               AgendaDia(),
               AgendaDia(),
             ],
-          ),
+          )),
         ));
   }
 

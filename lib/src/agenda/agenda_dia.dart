@@ -16,7 +16,12 @@ class _AgendaDiaState extends State<AgendaDia> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                        'assets/img/arte_uergs/Background_App_Siepex.png'),
+                    fit: BoxFit.fill)),
+            padding: EdgeInsets.symmetric(horizontal: 15),
             child: ListView(
               children: <Widget>[
                 linhaHora(),
@@ -36,7 +41,7 @@ class _AgendaDiaState extends State<AgendaDia> {
       width: 300,
       child: Text(
         '00:00',
-        style: TextStyle(color: Colors.grey[400], fontSize: 25),
+        style: TextStyle(fontSize: 25),
         textAlign: TextAlign.right,
       ),
       decoration: BoxDecoration(

@@ -16,13 +16,19 @@ class _EventosPageState extends State<EventosPage> {
         appBar: AppBar(
           title: Text('Eventos'),
         ),
-        body: ListView(
-          children: <Widget>[
-            eventoBanner('Minicursos'),
-            eventoBanner('Visitas Técnicas'),
-            eventoBanner('Científica'),
-          ],
-        ),
+        body: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                        'assets/img/arte_uergs/Background_App_Siepex.png'),
+                    fit: BoxFit.fill)),
+            child: ListView(
+              children: <Widget>[
+                eventoBanner('Minicursos'),
+                eventoBanner('Visitas Técnicas'),
+                eventoBanner('Científica'),
+              ],
+            )),
       ),
     );
   }
