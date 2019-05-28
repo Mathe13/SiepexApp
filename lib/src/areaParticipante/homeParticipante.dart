@@ -49,87 +49,99 @@ class HomeParticipanteState extends State<HomeParticipante>
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: Text(nome),
-            accountEmail: Text(email),
-            currentAccountPicture: new CircleAvatar(
-              backgroundImage: new NetworkImage(
-                  'https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4'),
-            ),
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.green[300], Colors.blueGrey.shade300])),
-            margin: EdgeInsets.zero,
-            onDetailsPressed: () {
-              _showDrawerContents = !_showDrawerContents;
-              if (_showDrawerContents)
-                _controller.reverse();
-              else
-                _controller.forward();
-            },
-          ),
-          MediaQuery.removePadding(
-            context: context,
-            removeTop: true,
-            child: Expanded(
-              child: ListView(
-                dragStartBehavior: DragStartBehavior.down,
-                padding: EdgeInsets.only(top: 8.0),
-                children: <Widget>[
-                  Stack(
+      child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                      'assets/img/arte_uergs/Background_App_Siepex.png'),
+                  fit: BoxFit.fill)),
+          child: Column(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text(nome),
+                accountEmail: Text(email),
+                currentAccountPicture: new CircleAvatar(
+                  backgroundImage: new NetworkImage(
+                      'https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4'),
+                ),
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  Color(0xff249FAB),
+                  Color(0xff2E4D89),
+                  Color(0xff704989),
+                  Color(0xffEAA074)
+                ])),
+                margin: EdgeInsets.zero,
+                onDetailsPressed: () {
+                  _showDrawerContents = !_showDrawerContents;
+                  if (_showDrawerContents)
+                    _controller.reverse();
+                  else
+                    _controller.forward();
+                },
+              ),
+              MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: Expanded(
+                  child: Container(
+                      child: ListView(
+                    dragStartBehavior: DragStartBehavior.down,
+                    padding: EdgeInsets.only(top: 8.0),
                     children: <Widget>[
-                      FadeTransition(
-                        opacity: _drawerContentsOpacity,
-                        child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              item('Escanear Presença', 'qr',
-                                  Icons.camera_enhance),
-                              item(
-                                  'Alimentação', 'alimentacao', Icons.fastfood),
-                              item('Minha Agenda', '', Icons.calendar_today),
-                            ]),
-                      ),
-                      SlideTransition(
-                        position: _drawerDetailsPosition,
-                        child: FadeTransition(
-                          opacity: ReverseAnimation(_drawerContentsOpacity),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              ListTile(
-                                leading:
-                                    Icon(Icons.edit, color: Colors.green[300]),
-                                title: Text('Editar Perfil'),
-                                onTap: () {},
-                              ),
-                              ListTile(
-                                leading: Icon(
-                                  Icons.exit_to_app,
-                                  color: Colors.red,
-                                ),
-                                title: Text(
-                                  'Sair',
-                                  style: TextStyle(color: Colors.red),
-                                ),
-                                onTap: () {},
-                              ),
-                            ],
+                      Stack(
+                        children: <Widget>[
+                          FadeTransition(
+                            opacity: _drawerContentsOpacity,
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  item('Escanear Presença', 'qr',
+                                      Icons.camera_enhance),
+                                  item('Alimentação', 'alimentacao',
+                                      Icons.fastfood),
+                                  item(
+                                      'Minha Agenda', '', Icons.calendar_today),
+                                ]),
                           ),
-                        ),
+                          SlideTransition(
+                            position: _drawerDetailsPosition,
+                            child: FadeTransition(
+                              opacity: ReverseAnimation(_drawerContentsOpacity),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: <Widget>[
+                                  ListTile(
+                                    leading: Icon(Icons.edit,
+                                        color: Colors.green[300]),
+                                    title: Text('Editar Perfil'),
+                                    onTap: () {},
+                                  ),
+                                  ListTile(
+                                    leading: Icon(
+                                      Icons.exit_to_app,
+                                      color: Colors.red,
+                                    ),
+                                    title: Text(
+                                      'Sair',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    onTap: () {},
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
-                ],
+                  )),
+                ),
               ),
-            ),
-          ),
-        ],
-      ),
+            ],
+          )),
     );
   }
 

@@ -74,7 +74,7 @@ class InicioPage extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     itemButton(
-                        new GridItem('Comissão Organizacional', '404',
+                        new GridItem('Comissão Organizadora', '404',
                             Icons.business_center),
                         context),
                     itemButton(

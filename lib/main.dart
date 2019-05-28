@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       title: 'WebAr',
       theme: ThemeData(
         textSelectionColor: Colors.white,
-        primaryColor: Color(0xff055E3E),
+        primaryColor: Color(0xff2595A6),
         primaryTextTheme: Typography(platform: TargetPlatform.iOS).white,
         textTheme: Typography(platform: TargetPlatform.iOS).white,
         // backgroundColor: Colors.green[30],
