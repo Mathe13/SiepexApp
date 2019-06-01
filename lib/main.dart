@@ -7,6 +7,7 @@ import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/hoteis/hoteis.dart';
 import 'package:siepex/src/info/info.dart';
 import 'package:siepex/src/inicio/inicio.dart';
+import 'package:siepex/src/mapa_evento/mapa_evento.dart';
 import 'package:siepex/src/notfound.dart';
 import 'package:siepex/src/palestrantes/palestrantes.dart';
 import 'package:siepex/src/restaurantes/restaurante.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         'qr': (BuildContext context) => QrPage(),
         '404': (BuildContext context) => NotFoundPage(),
         'alimentacao': (BuildContext context) => AlimentacaoPage(),
+        'MapaEvento': (BuildContext context) => MapaEventoPage(),
       },
       title: 'WebAr',
       theme: ThemeData(

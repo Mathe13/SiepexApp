@@ -24,7 +24,7 @@ class InicioPage extends StatelessWidget {
                 image: DecorationImage(
                     image: AssetImage(
                         'assets/img/arte_uergs/Background_App_Siepex.png'),
-                    fit: BoxFit.fill)),
+                    fit: BoxFit.cover)),
             child: ListView(
               children: <Widget>[
                 Container(
@@ -46,8 +46,8 @@ class InicioPage extends StatelessWidget {
                         new GridItem('Sobre o Siepex', 'sobre', Icons.info),
                         context),
                     itemButton(
-                        new GridItem('Apresentadores de Trabalhos',
-                            'palestrantes', Icons.group),
+                        new GridItem(
+                            'Apresentadores', 'palestrantes', Icons.group),
                         context)
                   ],
                 ),
@@ -82,7 +82,8 @@ class InicioPage extends StatelessWidget {
                             Icons.assignment_ind),
                         context),
                     itemButton(
-                        new GridItem('Mapa do evento', '404', Mdi.map_marker),
+                        new GridItem(
+                            'Mapa do evento', 'MapaEvento', Mdi.map_marker),
                         context)
                   ],
                 )

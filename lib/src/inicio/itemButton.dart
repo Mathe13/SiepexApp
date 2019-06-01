@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:siepex/utils/percentage_helper.dart';
 
 class GridItem {
   String nome;
@@ -7,26 +8,40 @@ class GridItem {
   GridItem(this.nome, this.rota, this.icone);
 }
 
-Widget itemButton(GridItem item, BuildContext context, {bool expanded = true}) {
+Widget itemButton(GridItem item, BuildContext context,
+    {bool expanded = true, Future<dynamic> func(), bool function = false}) {
   Widget retorno = FlatButton(
     onPressed: () {
-      Navigator.pushNamed(context, item.rota);
+      if (function) {
+        func();
+      } else {
+        Navigator.pushNamed(context, item.rota);
+      }
     },
     child: Container(
-        decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30))),
+        height: PercentageHelper.height(15, context),
+        width: PercentageHelper.width(30, context),
+        padding: EdgeInsets.all(3),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.black),
+            color: Color(0xff249FAB),
+            borderRadius: BorderRadius.circular(20)),
         child: Column(
           children: <Widget>[
             Icon(
               item.icone,
               size: 70,
               color: Colors.white,
+              // semanticLabel: 'fjhdjkfhdjkfhjk',
             ),
             Text(
               item.nome,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 11, color: Colors.white),
+              overflow: TextOverflow.fade,
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+              ),
               softWrap: true,
             )
           ],

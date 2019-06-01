@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:siepex/mdi.dart';
+import 'package:siepex/utils/percentage_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InfoPage extends StatelessWidget {
@@ -62,13 +64,18 @@ class InfoPage extends StatelessWidget {
   Widget linhaDesc(String texto) {
     return Container(
       width: 300,
-      child: Text(
-        texto,
-        style: TextStyle(fontSize: 25),
-        textAlign: TextAlign.right,
-      ),
+      child: Container(
+          margin: EdgeInsets.only(right: 15),
+          child: Text(
+            texto,
+            style: TextStyle(fontSize: 27, fontStyle: FontStyle.italic),
+            textAlign: TextAlign.right,
+          )),
       decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: Colors.green))),
+          border: Border(
+        bottom: BorderSide(color: Colors.green),
+        // top: BorderSide(color: Colors.green)
+      )),
     );
   }
 
@@ -84,9 +91,13 @@ class InfoPage extends StatelessWidget {
             }
           },
           child: Container(
-              decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30))),
+              // height: PercentageHelper.height(17, context),
+              // width: PercentageHelper.width(35, context),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  color: Color(0xff249FAB),
+                  borderRadius: BorderRadius.circular(20)),
               child: Column(
                 children: <Widget>[
                   Icon(

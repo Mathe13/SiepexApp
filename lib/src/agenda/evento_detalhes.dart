@@ -14,78 +14,90 @@ class _EventoDetalhesState extends State<EventoDetalhes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 200,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                "Palestra bacana",
-                style: TextStyle(),
-              ),
-              background: Stack(
-                fit: StackFit.expand,
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.only(left: 5, right: 5),
-                      width: 100,
-                      height: 100,
-                      decoration: new BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          image: new DecorationImage(
-                              fit: BoxFit.cover,
-                              image: new NetworkImage(
-                                  "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment(0.0, -1.0),
-                        end: Alignment(0.0, -0.4),
-                        colors: <Color>[Color(0x60000000), Color(0x00000000)],
-                      ),
-                    ),
+      body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                      'assets/img/arte_uergs/Background_App_Siepex.png'),
+                  fit: BoxFit.fill)),
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                expandedHeight: 200,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    "Palestra bacana",
+                    style: TextStyle(),
                   ),
-                ],
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: <Widget>[
+                      Container(
+                          margin: EdgeInsets.only(left: 5, right: 5),
+                          width: 100,
+                          height: 100,
+                          decoration: new BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              image: new DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: new NetworkImage(
+                                      "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment(0.0, -1.0),
+                            end: Alignment(0.0, -0.4),
+                            colors: <Color>[
+                              Color(0x60000000),
+                              Color(0x00000000)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              AnnotatedRegion<SystemUiOverlayStyle>(
-                  value: SystemUiOverlayStyle.dark,
-                  child: ListTile(
-                      title: Text(
-                    "Descrição:",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ))),
-              ListTile(
-                  title: Text.rich(TextSpan(
-                      text:
-                          """Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. """))),
-              AnnotatedRegion<SystemUiOverlayStyle>(
-                  value: SystemUiOverlayStyle.dark,
-                  child: ListTile(
-                      title: Text(
-                    "Horario:",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ))),
-              ListTile(
-                title: Text('Dia 1'),
-                subtitle: Text('00:00-00:30'),
-              ),
-              AnnotatedRegion<SystemUiOverlayStyle>(
-                  value: SystemUiOverlayStyle.dark,
-                  child: ListTile(
-                      title: Text(
-                    "Palestrante(s):",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ))),
-              palestranteCard(new Palestrante(), context)
-            ]),
-          )
-        ],
-      ),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  AnnotatedRegion<SystemUiOverlayStyle>(
+                      value: SystemUiOverlayStyle.dark,
+                      child: ListTile(
+                          title: Text(
+                        "Descrição:",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ))),
+                  ListTile(
+                      title: Text.rich(TextSpan(
+                          text:
+                              """Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. """))),
+                  AnnotatedRegion<SystemUiOverlayStyle>(
+                      value: SystemUiOverlayStyle.dark,
+                      child: ListTile(
+                          title: Text(
+                        "Horario:",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ))),
+                  ListTile(
+                    title: Text('Dia 1'),
+                    subtitle: Text('00:00-00:30'),
+                  ),
+                  AnnotatedRegion<SystemUiOverlayStyle>(
+                      value: SystemUiOverlayStyle.dark,
+                      child: ListTile(
+                          title: Text(
+                        "Palestrante(s):",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ))),
+                  palestranteCard(new Palestrante(), context)
+                ]),
+              )
+            ],
+          )),
     );
   }
 
@@ -96,7 +108,8 @@ class _EventoDetalhesState extends State<EventoDetalhes> {
               MaterialPageRoute(builder: (context) => EventoDetalhes()));
         },
         child: Card(
-          color: Colors.grey[200],
+          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          color: Color(0xff2595A6),
           elevation: 10,
           child: Container(
             padding: EdgeInsets.all(20),
@@ -135,7 +148,7 @@ class _EventoDetalhesState extends State<EventoDetalhes> {
             ),
           ),
           shape: RoundedRectangleBorder(
-              side: BorderSide(color: Colors.green, style: BorderStyle.solid),
+              side: BorderSide(color: Colors.black, style: BorderStyle.solid),
               borderRadius: BorderRadius.all(Radius.circular(20))),
         ));
   }

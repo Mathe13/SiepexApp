@@ -29,6 +29,8 @@ dev_dependencies:
   barcode_scan: ^0.0.3
   material_design_icons_flutter: ^3.2.3595
   flutter_webview_plugin: 0.3.3
+  extended_image : ^0.3.8
+
   flutter_test:
     sdk: flutter
 
@@ -53,6 +55,7 @@ flutter:
     - assets/img/arte_uergs/Icon_Siepex.png
     - assets/img/arte_uergs/imagem-cabecalho-uergs-siepex-inove.png
     - assets/img/arte_uergs/Logo-Siepex-sobre.png
+    - assets/img/arte_uergs/Mapa_Campus.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

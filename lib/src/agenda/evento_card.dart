@@ -19,7 +19,8 @@ class _EventoCardState extends State<EventoCard> {
               MaterialPageRoute(builder: (context) => EventoDetalhes()));
         },
         child: Card(
-          color: Colors.grey[500],
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          color: Color(0xff249FAB),
           elevation: 10,
           child: Container(
             padding: EdgeInsets.all(20),
@@ -59,7 +60,9 @@ class _EventoCardState extends State<EventoCard> {
           ),
           shape: RoundedRectangleBorder(
               side: BorderSide(
-                  color: Colors.green, style: BorderStyle.solid, width: 3),
+                color: Colors.black,
+                style: BorderStyle.solid,
+              ),
               borderRadius: BorderRadius.all(Radius.circular(20))),
         ));
   }
