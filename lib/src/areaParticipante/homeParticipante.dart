@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
+import 'package:siepex/src/config.dart';
+import 'package:siepex/src/login/login.dart';
+
+var user = storage.getItem('user');
 
 class HomeParticipante extends StatefulWidget {
   @override
@@ -10,8 +14,8 @@ class HomeParticipante extends StatefulWidget {
 
 class HomeParticipanteState extends State<HomeParticipante>
     with TickerProviderStateMixin {
-  String nome = "nome";
-  String email = "email@email.com";
+  String nome = user['nome'];
+  String email = user['email'];
 
   static final Animatable<Offset> _drawerDetailsTween = Tween<Offset>(
     begin: Offset(0.0, -1.0),
@@ -113,12 +117,12 @@ class HomeParticipanteState extends State<HomeParticipante>
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: <Widget>[
-                                  ListTile(
-                                    leading: Icon(Icons.edit,
-                                        color: Colors.green[300]),
-                                    title: Text('Editar Perfil'),
-                                    onTap: () {},
-                                  ),
+                                  // ListTile(
+                                  //   leading: Icon(Icons.edit,
+                                  //       color: Colors.green[300]),
+                                  //   title: Text('Editar Perfil'),
+                                  //   onTap: () {},
+                                  // ),
                                   ListTile(
                                     leading: Icon(
                                       Icons.exit_to_app,
@@ -128,7 +132,14 @@ class HomeParticipanteState extends State<HomeParticipante>
                                       'Sair',
                                       style: TextStyle(color: Colors.red),
                                     ),
-                                    onTap: () {},
+                                    onTap: () {
+                                      storage.deleteItem("user");
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute(
+                                            builder: (context) => LoginPage()),
+                                        ModalRoute.withName('tabs'),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),

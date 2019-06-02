@@ -7,21 +7,24 @@ import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/hoteis/hoteis.dart';
 import 'package:siepex/src/info/info.dart';
 import 'package:siepex/src/inicio/inicio.dart';
+import 'package:siepex/src/login/login.dart';
 import 'package:siepex/src/mapa_evento/mapa_evento.dart';
 import 'package:siepex/src/notfound.dart';
 import 'package:siepex/src/palestrantes/palestrantes.dart';
 import 'package:siepex/src/restaurantes/restaurante.dart';
 import 'package:siepex/src/sobre/sobre.dart';
 import 'package:siepex/src/tabs/tabs.dart';
+import 'package:siepex/src/config.dart';
 
 void main() => runApp(MyApp());
+var user = storage.getItem('user');
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'inicio',
+      initialRoute: user == null ? 'login' : 'inicio',
       routes: <String, WidgetBuilder>{
         'tabs': (BuildContext context) => TabsPage(),
         'eventos': (BuildContext context) => EventosPage(),
@@ -37,8 +40,9 @@ class MyApp extends StatelessWidget {
         '404': (BuildContext context) => NotFoundPage(),
         'alimentacao': (BuildContext context) => AlimentacaoPage(),
         'MapaEvento': (BuildContext context) => MapaEventoPage(),
+        'login': (BuildContext context) => LoginPage(),
       },
-      title: 'WebAr',
+      title: 'Siepex App',
       theme: ThemeData(
         textSelectionColor: Colors.white,
         primaryColor: Color(0xff2595A6),
