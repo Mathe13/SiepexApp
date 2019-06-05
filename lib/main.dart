@@ -14,17 +14,15 @@ import 'package:siepex/src/palestrantes/palestrantes.dart';
 import 'package:siepex/src/restaurantes/restaurante.dart';
 import 'package:siepex/src/sobre/sobre.dart';
 import 'package:siepex/src/tabs/tabs.dart';
-import 'package:siepex/src/config.dart';
 
 void main() => runApp(MyApp());
-var user = storage.getItem('user');
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: user == null ? 'login' : 'inicio',
+      initialRoute: 'inicio',
       routes: <String, WidgetBuilder>{
         'tabs': (BuildContext context) => TabsPage(),
         'eventos': (BuildContext context) => EventosPage(),

@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:siepex/models/participante.dart';
 import 'package:siepex/src/config.dart';
 import 'package:siepex/src/inicio/inicio.dart';
 import 'package:siepex/src/input.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 MaskedTextController cpf = MaskedTextController(mask: "000.000.000-00");
 TextEditingController senha = TextEditingController();
@@ -134,7 +136,9 @@ class LoginPage extends StatelessWidget {
           ],
         ).show();
       } else {
-        storage.setItem("user", resposta);
+        var user = new Participante();
+        user.fromJson(resposta);
+        user.setStorage();
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => InicioPage()),
           ModalRoute.withName('tabs'),

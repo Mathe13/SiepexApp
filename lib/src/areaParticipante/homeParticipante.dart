@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:siepex/models/participante.dart';
 import 'package:siepex/src/config.dart';
 import 'package:siepex/src/login/login.dart';
-
-var user = storage.getItem('user');
 
 class HomeParticipante extends StatefulWidget {
   @override
@@ -14,9 +14,8 @@ class HomeParticipante extends StatefulWidget {
 
 class HomeParticipanteState extends State<HomeParticipante>
     with TickerProviderStateMixin {
-  String nome = user['nome'];
-  String email = user['email'];
-
+  String nome = 'Convidado';
+  String email = "Não logado";
   static final Animatable<Offset> _drawerDetailsTween = Tween<Offset>(
     begin: Offset(0.0, -1.0),
     end: Offset.zero,
@@ -38,6 +37,15 @@ class HomeParticipanteState extends State<HomeParticipante>
 
   @override
   void initState() {
+    Participante.getStorage().then((user) {
+      print(user);
+      setState(() {
+        nome = user.nome;
+        email = user.email;
+      });
+    }).catchError((error) {
+      print(error);
+    });
     super.initState();
     _controller = AnimationController(
       vsync: this,
@@ -132,8 +140,7 @@ class HomeParticipanteState extends State<HomeParticipante>
                                       'Sair',
                                       style: TextStyle(color: Colors.red),
                                     ),
-                                    onTap: () {
-                                      storage.deleteItem("user");
+                                    onTap: () async {
                                       Navigator.of(context).pushAndRemoveUntil(
                                         MaterialPageRoute(
                                             builder: (context) => LoginPage()),
