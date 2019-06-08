@@ -25,7 +25,7 @@ class _EventosPageState extends State<EventosPage> {
             child: ListView(
               children: <Widget>[
                 eventoBanner('Geral'),
-                eventoBanner('Minicursos'),
+                eventoBanner('Minicursos', url: "minicursos"),
                 eventoBanner('Visitas Técnicas'),
                 eventoBanner('Científica'),
               ],
@@ -34,10 +34,10 @@ class _EventosPageState extends State<EventosPage> {
     );
   }
 
-  Widget eventoBanner(String title) {
+  Widget eventoBanner(String title, {String url = "agenda"}) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, 'agenda');
+          Navigator.pushNamed(context, url);
         },
         child: Card(
           semanticContainer: true,

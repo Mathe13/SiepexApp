@@ -138,6 +138,12 @@ class Participante {
     print('usuario salvo com sucesso');
   }
 
+  static Future logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('userKey');
+    prefs.remove('userValue');
+  }
+
   /// Não recebe nenhum parâmentro e retorna um Objeto do Usuario gravado localmente
   static Future getStorage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

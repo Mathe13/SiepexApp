@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:siepex/mdi.dart';
 import 'package:siepex/models/participante.dart';
 import 'package:siepex/src/config.dart';
 import 'package:siepex/src/login/login.dart';
@@ -131,23 +132,41 @@ class HomeParticipanteState extends State<HomeParticipante>
                                   //   title: Text('Editar Perfil'),
                                   //   onTap: () {},
                                   // ),
-                                  ListTile(
-                                    leading: Icon(
-                                      Icons.exit_to_app,
-                                      color: Colors.red,
-                                    ),
-                                    title: Text(
-                                      'Sair',
-                                      style: TextStyle(color: Colors.red),
-                                    ),
-                                    onTap: () async {
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                        MaterialPageRoute(
-                                            builder: (context) => LoginPage()),
-                                        ModalRoute.withName('tabs'),
-                                      );
-                                    },
-                                  ),
+                                  nome == 'Convidado'
+                                      ? ListTile(
+                                          leading: Icon(
+                                            Mdi.login,
+                                            color: Colors.green,
+                                          ),
+                                          title: Text(
+                                            'Login',
+                                            style:
+                                                TextStyle(color: Colors.green),
+                                          ),
+                                          onTap: () async {
+                                            Navigator.of(context)
+                                                .pushAndRemoveUntil(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginPage()),
+                                              ModalRoute.withName('tabs'),
+                                            );
+                                          },
+                                        )
+                                      : ListTile(
+                                          leading: Icon(
+                                            Icons.exit_to_app,
+                                            color: Colors.red,
+                                          ),
+                                          title: Text(
+                                            'Sair',
+                                            style: TextStyle(color: Colors.red),
+                                          ),
+                                          onTap: () async {
+                                            await Participante.logout();
+                                            Navigator.pop(context);
+                                          },
+                                        )
                                 ],
                               ),
                             ),

@@ -36,11 +36,11 @@ class _AgendaDiaState extends State<AgendaDia> {
             )));
   }
 
-  Widget linhaHora() {
+  Widget linhaHora({String hora = "00:00"}) {
     return Container(
       width: 300,
       child: Text(
-        '00:00',
+        hora,
         style: TextStyle(fontSize: 25),
         textAlign: TextAlign.right,
       ),
