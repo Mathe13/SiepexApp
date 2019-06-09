@@ -26,7 +26,7 @@ class _EventosPageState extends State<EventosPage> {
               children: <Widget>[
                 eventoBanner('Geral'),
                 eventoBanner('Minicursos', url: "minicursos"),
-                eventoBanner('Visitas Técnicas'),
+                eventoBanner('Visitas Técnicas', url: 'visitas'),
                 eventoBanner('Científica'),
               ],
             )),
