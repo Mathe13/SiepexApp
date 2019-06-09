@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siepex/models/visitas.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VisitasDetalhes extends StatelessWidget {
   final Visita visita;
@@ -109,6 +110,7 @@ class VisitasDetalhes extends StatelessWidget {
                     Divider(
                       color: Colors.black,
                     ),
+                    contatos(visita.tblContatoVisitas),
                     ListTile(
                       title: FlatButton(
                         shape: RoundedRectangleBorder(
@@ -132,6 +134,71 @@ class VisitasDetalhes extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  Widget contatos(List<TblContatoVisitas> contatos) {
+    List<Widget> contatosLista = [];
+    if (contatos == null || contatos.length == 0) {
+      return Container();
+    } else {
+      contatosLista.add(
+        ListTile(
+          dense: true,
+          title: Text(
+            "Contato",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+        ),
+      );
+      contatos.forEach((contato) {
+        contatosLista.add(ListTile(
+          title: Text(contato.nome),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              contato.telefone1 != ''
+                  ? GestureDetector(
+                      onTap: () async {
+                        String url = "tel:${contato.telefone1}";
+                        if (await canLaunch(url)) {
+                          launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: Text(contato.telefone1))
+                  : Container(),
+              contato.telefone2 != ''
+                  ? GestureDetector(
+                      onTap: () async {
+                        String url = "tel:${contato.telefone2}";
+                        if (await canLaunch(url)) {
+                          launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: Text(contato.telefone2))
+                  : Container(),
+              contato.email != ''
+                  ? GestureDetector(
+                      onTap: () async {
+                        String url = "mailto:${contato.email}";
+                        if (await canLaunch(url)) {
+                          launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: Text(contato.email))
+                  : Container(),
+            ],
+          ),
+        ));
+      });
+      contatosLista.add(Divider());
+      return Column(children: contatosLista);
+    }
   }
 
   Widget palestranteCard(String nome, BuildContext context) {
