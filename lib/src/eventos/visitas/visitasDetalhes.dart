@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:siepex/models/participante.dart';
 import 'package:siepex/models/visitas.dart';
+import 'package:siepex/src/config.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
 
 class VisitasDetalhes extends StatelessWidget {
   final Visita visita;
@@ -117,7 +123,73 @@ class VisitasDetalhes extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30)),
                         color: Color(0xff2595A6),
                         onPressed: () {
-                          // validaCampos();
+                          Participante.getStorage().then((participante) {
+                            http.put(
+                                baseUrl +
+                                    "visitas/${visita.idVisitas}/cadastrar",
+                                body: {
+                                  "id_participante": participante.id
+                                }).then((respostaRaw) {
+                              var resposta = jsonDecode(respostaRaw.body);
+                              if (resposta['status'] == "sucesso") {
+                                Alert(
+                                  context: context,
+                                  type: AlertType.success,
+                                  title: "Sucesso",
+                                  desc: "Cadastrado com sucesso",
+                                  buttons: [
+                                    DialogButton(
+                                      child: Text(
+                                        "Ok",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                      onPressed: () => Navigator.pop(context),
+                                      width: 120,
+                                    )
+                                  ],
+                                ).show();
+                              } else if (resposta['status'] ==
+                                  "falha, já ocupado") {
+                                Alert(
+                                  context: context,
+                                  type: AlertType.warning,
+                                  title: "Falha",
+                                  desc: "Parece que voce está ocupado",
+                                  buttons: [
+                                    DialogButton(
+                                      child: Text(
+                                        "Ok",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                      onPressed: () => Navigator.pop(context),
+                                      width: 120,
+                                    )
+                                  ],
+                                ).show();
+                              }
+                            });
+                          }).catchError((onError) {
+                            print(onError);
+                            Alert(
+                              context: context,
+                              type: AlertType.error,
+                              title: "Erro",
+                              desc: "Estamos com problemas tecnicos",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "Ok",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  width: 120,
+                                )
+                              ],
+                            ).show();
+                          });
                         },
                         child: Text(
                           "Cadastrar",
@@ -217,7 +289,6 @@ class VisitasDetalhes extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Container(
-                            // margin: EdgeInsets.only(left: 20, right: 10, top: 15),
                             width: 70,
                             height: 70,
                             decoration: new BoxDecoration(

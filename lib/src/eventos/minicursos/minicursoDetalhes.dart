@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:siepex/models/minicurso.dart';
-import 'package:siepex/models/palestrante.dart';
+import 'package:siepex/models/participante.dart';
+import 'package:http/http.dart' as http;
+import 'package:siepex/src/config.dart';
 
 class MinicursoDetalhes extends StatelessWidget {
   final Minicurso minicurso;
@@ -141,7 +145,73 @@ class MinicursoDetalhes extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30)),
                         color: Color(0xff2595A6),
                         onPressed: () {
-                          // validaCampos();
+                          Participante.getStorage().then((participante) {
+                            http.put(
+                                baseUrl +
+                                    "minicursos/${minicurso.id}/cadastrar",
+                                body: {
+                                  "id_participante": participante.id
+                                }).then((respostaRaw) {
+                              var resposta = jsonDecode(respostaRaw.body);
+                              if (resposta['status'] == "sucesso") {
+                                Alert(
+                                  context: context,
+                                  type: AlertType.success,
+                                  title: "Sucesso",
+                                  desc: "Cadastrado com sucesso",
+                                  buttons: [
+                                    DialogButton(
+                                      child: Text(
+                                        "Ok",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                      onPressed: () => Navigator.pop(context),
+                                      width: 120,
+                                    )
+                                  ],
+                                ).show();
+                              } else if (resposta['status'] ==
+                                  "falha, já ocupado") {
+                                Alert(
+                                  context: context,
+                                  type: AlertType.warning,
+                                  title: "Falha",
+                                  desc: "Parece que voce está ocupado",
+                                  buttons: [
+                                    DialogButton(
+                                      child: Text(
+                                        "Ok",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                      onPressed: () => Navigator.pop(context),
+                                      width: 120,
+                                    )
+                                  ],
+                                ).show();
+                              }
+                            });
+                          }).catchError((onError) {
+                            print(onError);
+                            Alert(
+                              context: context,
+                              type: AlertType.error,
+                              title: "Erro",
+                              desc: "Estamos com problemas tecnicos",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "Ok",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  width: 120,
+                                )
+                              ],
+                            ).show();
+                          });
                         },
                         child: Text(
                           "Cadastrar",

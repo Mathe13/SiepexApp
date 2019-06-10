@@ -32,7 +32,6 @@ dev_dependencies:
   localstorage: ^2.0.0
   shared_preferences:
   flutter_spinkit: ^3.1.0
-  # state_persistence:
   rflutter_alert: ^1.0.2
   material_design_icons_flutter: ^3.2.3595
   flutter_webview_plugin: 0.3.3
