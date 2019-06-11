@@ -4,25 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:siepex/models/minicurso.dart';
+import 'package:siepex/models/participante.dart';
 import 'package:siepex/src/config.dart';
 import 'package:siepex/src/eventos/minicursos/minicursoCard.dart';
 import 'package:siepex/src/eventos/widgets/widgets.dart';
 
 class ListagemMinicursos extends StatefulWidget {
-  ListagemMinicursos({Key key}) : super(key: key);
-
+  ListagemMinicursos({Key key, this.total = true}) : super(key: key);
+  final bool total;
   _ListagemMinicursosState createState() => _ListagemMinicursosState();
 }
 
 class _ListagemMinicursosState extends State<ListagemMinicursos> {
   List<dynamic> viewMinicursos = [];
   bool falha = false;
-  getMinicursos() async {
+  getTodosMinicursos() async {
     try {
       var minicursos =
           jsonDecode((await http.get(baseUrl + "minicursos")).body);
       print(minicursos);
-      // print(minicursos.runtimeType);
       setState(() {
         viewMinicursos = minicursos;
       });
@@ -31,12 +31,32 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
     }
   }
 
+  getMeusMinicursos() async {
+    Participante.getStorage().then((user) async {
+      try {
+        var minicursos = jsonDecode(
+            (await http.get(baseUrl + "participante/${user.id}/minicursos"))
+                .body);
+        setState(() {
+          print(minicursos);
+          viewMinicursos = minicursos['tbl_minicursos'];
+        });
+      } catch (e) {
+        print("erro");
+        print(e);
+      }
+    });
+  }
+
   @override
   void initState() {
-    // TODO: implement initState
-    // Loading.neverSatisfied(context, true);
-    getMinicursos();
-    // Loading.neverSatisfied(context, false);
+    if (widget.total) {
+      print("geral");
+      getTodosMinicursos();
+    } else {
+      print("especifico");
+      getMeusMinicursos();
+    }
     super.initState();
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:siepex/models/minicurso.dart';
+import 'package:siepex/models/participante.dart';
 import 'package:siepex/models/visitas.dart';
 import 'package:siepex/src/config.dart';
 import 'package:siepex/src/eventos/minicursos/minicursoCard.dart';
@@ -11,7 +12,8 @@ import 'package:siepex/src/eventos/visitas/visitasCard.dart';
 import 'package:siepex/src/eventos/widgets/widgets.dart';
 
 class ListagemVisitas extends StatefulWidget {
-  ListagemVisitas({Key key}) : super(key: key);
+  ListagemVisitas({Key key, this.total = true}) : super(key: key);
+  final bool total;
 
   _ListagemVisitasState createState() => _ListagemVisitasState();
 }
@@ -19,7 +21,7 @@ class ListagemVisitas extends StatefulWidget {
 class _ListagemVisitasState extends State<ListagemVisitas> {
   List<dynamic> viewVisitas = [];
   bool falha = false;
-  getVisitas() async {
+  getTodasVisitas() async {
     try {
       var visitas = jsonDecode((await http.get(baseUrl + "visitas")).body);
       print(visitas);
@@ -32,12 +34,29 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
     }
   }
 
+  getMinhasVisitas() async {
+    Participante.getStorage().then((user) async {
+      try {
+        var visitas = jsonDecode(
+            (await http.get(baseUrl + "participante/${user.id}/visitas")).body);
+        setState(() {
+          print(visitas);
+          viewVisitas = visitas['tbl_visitas'];
+        });
+      } catch (e) {
+        print("erro");
+        print(e);
+      }
+    });
+  }
+
   @override
   void initState() {
-    // TODO: implement initState
-    // Loading.neverSatisfied(context, true);
-    getVisitas();
-    // Loading.neverSatisfied(context, false);
+    if (widget.total) {
+      getTodasVisitas();
+    } else {
+      getMinhasVisitas();
+    }
     super.initState();
   }
 

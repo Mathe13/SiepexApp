@@ -114,8 +114,8 @@ class HomeParticipanteState extends State<HomeParticipante>
                                       Icons.camera_enhance),
                                   item('Alimentação', 'alimentacao',
                                       Icons.fastfood),
-                                  item(
-                                      'Minha Agenda', '', Icons.calendar_today),
+                                  item('Minha Agenda', 'meuseventos',
+                                      Icons.calendar_today),
                                 ]),
                           ),
                           SlideTransition(
