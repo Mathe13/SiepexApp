@@ -17,7 +17,7 @@ class ListagemMinicursos extends StatefulWidget {
 
 class _ListagemMinicursosState extends State<ListagemMinicursos> {
   List<dynamic> viewMinicursos = [];
-  bool falha = false;
+  bool carregou = false;
   getTodosMinicursos() async {
     try {
       var minicursos =
@@ -28,6 +28,10 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
       });
     } catch (e) {
       print(e);
+    } finally {
+      setState(() {
+        carregou = true;
+      });
     }
   }
 
@@ -44,6 +48,10 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
       } catch (e) {
         print("erro");
         print(e);
+      } finally {
+        setState(() {
+          carregou = true;
+        });
       }
     });
   }
@@ -63,14 +71,14 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
   @override
   Widget build(BuildContext context) {
     print(viewMinicursos);
-    if ((viewMinicursos == null) /* && !falha*/) {
+    if (carregou == false) {
       return Container(
         child: SpinKitPouringHourglass(
           color: Colors.blueAccent,
           size: 200,
         ),
       );
-    } else if (viewMinicursos.length == 0) {
+    } else if (viewMinicursos.length == 0 && carregou == true) {
       return Text("nada a ser exibido");
     } else {
       List<Widget> widgetMinicursos = [];

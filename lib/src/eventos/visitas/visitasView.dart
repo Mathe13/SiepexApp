@@ -20,7 +20,7 @@ class ListagemVisitas extends StatefulWidget {
 
 class _ListagemVisitasState extends State<ListagemVisitas> {
   List<dynamic> viewVisitas = [];
-  bool falha = false;
+  bool carregou = false;
   getTodasVisitas() async {
     try {
       var visitas = jsonDecode((await http.get(baseUrl + "visitas")).body);
@@ -31,6 +31,10 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
       });
     } catch (e) {
       print(e);
+    } finally {
+      setState(() {
+        carregou = true;
+      });
     }
   }
 
@@ -46,6 +50,10 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
       } catch (e) {
         print("erro");
         print(e);
+      } finally {
+        setState(() {
+          carregou = true;
+        });
       }
     });
   }
@@ -63,14 +71,14 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
   @override
   Widget build(BuildContext context) {
     print(viewVisitas);
-    if ((viewVisitas == null) /* && !falha*/) {
+    if (carregou == false) {
       return Container(
         child: SpinKitPouringHourglass(
           color: Colors.blueAccent,
           size: 200,
         ),
       );
-    } else if (viewVisitas.length == 0) {
+    } else if (viewVisitas.length == 0 && carregou == true) {
       return Text("nada a ser exibido");
     } else {
       List<Widget> widgetVisitas = [];
