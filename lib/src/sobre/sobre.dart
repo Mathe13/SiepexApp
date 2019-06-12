@@ -36,19 +36,7 @@ class SobrePage extends StatelessWidget {
                 ListTile(
                     title: Text.rich(TextSpan(
                         text:
-                            """Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."""))),
-                AnnotatedRegion<SystemUiOverlayStyle>(
-                    value: SystemUiOverlayStyle.dark,
-                    child: ListTile(
-                        title: Text(
-                      "O que é o siepex:",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ))),
-                ListTile(
-                    title: Text.rich(TextSpan(
-                        text:
-                            """Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."""))),
+                            """O Siepex é um espaço de divulgação dos projetos de Iniciação Científica, de Iniciação Tecnológica e Inovação, de Ensino e de Extensão. Podem participar e apresentar suas produções os estudantes de graduação e de pós-graduação da Uergs e de outras instituições de Ensino Superior. """))),
               ],
             )));
   }
