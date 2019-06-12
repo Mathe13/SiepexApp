@@ -5,7 +5,9 @@ import 'package:siepex/src/eventos/minicursos/minicursoDetalhes.dart';
 
 class MinicursoCard extends StatelessWidget {
   final Minicurso minicurso;
-  const MinicursoCard({Key key, this.minicurso}) : super(key: key);
+  final bool cadastro;
+  const MinicursoCard({Key key, this.minicurso, this.cadastro = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class MinicursoCard extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) => MinicursoDetalhes(
                           minicurso: minicurso,
+                          cadastro: cadastro,
                         )));
           },
           child: Card(

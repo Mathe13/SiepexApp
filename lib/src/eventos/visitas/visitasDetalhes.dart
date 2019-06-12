@@ -10,10 +10,11 @@ import 'package:http/http.dart' as http;
 
 class VisitasDetalhes extends StatelessWidget {
   final Visita visita;
-
+  final bool cadastra;
   const VisitasDetalhes({
     Key key,
     this.visita,
+    this.cadastra = true,
   }) : super(key: key);
 
   @override
@@ -117,89 +118,183 @@ class VisitasDetalhes extends StatelessWidget {
                       color: Colors.black,
                     ),
                     contatos(visita.tblContatoVisitas),
-                    ListTile(
-                      title: FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        color: Color(0xff2595A6),
-                        onPressed: () {
-                          Participante.getStorage().then((participante) {
-                            http.put(
-                                baseUrl +
-                                    "visitas/${visita.idVisitas}/cadastrar",
-                                body: {
-                                  "id_participante": participante.id
-                                }).then((respostaRaw) {
-                              var resposta = jsonDecode(respostaRaw.body);
-                              if (resposta['status'] == "sucesso") {
-                                Alert(
-                                  context: context,
-                                  type: AlertType.success,
-                                  title: "Sucesso",
-                                  desc: "Cadastrado com sucesso",
-                                  buttons: [
-                                    DialogButton(
-                                      child: Text(
-                                        "Ok",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
-                                      ),
-                                      onPressed: () => Navigator.pop(context),
-                                      width: 120,
-                                    )
-                                  ],
-                                ).show();
-                              } else if (resposta['status'] ==
-                                  "falha, já ocupado") {
-                                Alert(
-                                  context: context,
-                                  type: AlertType.warning,
-                                  title: "Falha",
-                                  desc: "Parece que voce está ocupado",
-                                  buttons: [
-                                    DialogButton(
-                                      child: Text(
-                                        "Ok",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
-                                      ),
-                                      onPressed: () => Navigator.pop(context),
-                                      width: 120,
-                                    )
-                                  ],
-                                ).show();
-                              }
-                            });
-                          }).catchError((onError) {
-                            print(onError);
-                            Alert(
-                              context: context,
-                              type: AlertType.error,
-                              title: "Erro",
-                              desc: "Estamos com problemas tecnicos",
-                              buttons: [
-                                DialogButton(
-                                  child: Text(
-                                    "Ok",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                  width: 120,
-                                )
-                              ],
-                            ).show();
-                          });
-                        },
-                        child: Text(
-                          "Cadastrar",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
+                    cadastra
+                        ? ListTile(
+                            title: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              color: Color(0xff2595A6),
+                              onPressed: () {
+                                Participante.getStorage().then((participante) {
+                                  http.put(
+                                      baseUrl +
+                                          "visitas/${visita.idVisitas}/cadastrar",
+                                      body: {
+                                        "id_participante": participante.id
+                                      }).then((respostaRaw) {
+                                    var resposta = jsonDecode(respostaRaw.body);
+                                    if (resposta['status'] == "sucesso") {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: "Sucesso",
+                                        desc: "Cadastrado com sucesso",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "Ok",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            width: 120,
+                                          )
+                                        ],
+                                      ).show();
+                                    } else if (resposta['status'] ==
+                                        "falha, já ocupado") {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.warning,
+                                        title: "Falha",
+                                        desc: "Parece que voce está ocupado",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "Ok",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            width: 120,
+                                          )
+                                        ],
+                                      ).show();
+                                    }
+                                  });
+                                }).catchError((onError) {
+                                  print(onError);
+                                  Alert(
+                                    context: context,
+                                    type: AlertType.error,
+                                    title: "Erro",
+                                    desc: "Estamos com problemas tecnicos",
+                                    buttons: [
+                                      DialogButton(
+                                        child: Text(
+                                          "Ok",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        ),
+                                        onPressed: () => Navigator.pop(context),
+                                        width: 120,
+                                      )
+                                    ],
+                                  ).show();
+                                });
+                              },
+                              child: Text(
+                                "Cadastrar",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          )
+                        : ListTile(
+                            title: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              color: Color(0xff2595A6),
+                              onPressed: () {
+                                Participante.getStorage().then((participante) {
+                                  http
+                                      .delete(
+                                    baseUrl +
+                                        "visitas/${visita.idVisitas}/liberar/${participante.id}",
+                                  )
+                                      .then((respostaRaw) {
+                                    print(respostaRaw.body);
+                                    var resposta = jsonDecode(respostaRaw.body);
+                                    if (resposta['status'] == "sucesso") {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.success,
+                                        title: "Sucesso",
+                                        desc: "Liberado",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "Ok",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            width: 120,
+                                          )
+                                        ],
+                                      ).show();
+                                    } else {
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.warning,
+                                        title: "Sucesso",
+                                        desc: "Foi liberado",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "Ok",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            width: 120,
+                                          )
+                                        ],
+                                      ).show();
+                                    }
+                                  });
+                                }).catchError((onError) {
+                                  print(onError);
+                                  Alert(
+                                    context: context,
+                                    type: AlertType.error,
+                                    title: "Erro",
+                                    desc: "Estamos com problemas tecnicos",
+                                    buttons: [
+                                      DialogButton(
+                                        child: Text(
+                                          "Ok",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        ),
+                                        onPressed: () => Navigator.pop(context),
+                                        width: 120,
+                                      )
+                                    ],
+                                  ).show();
+                                });
+                              },
+                              child: Text(
+                                "Liberar",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
                   ],
                 ),
               )

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:siepex/models/visitas.dart';
-import 'package:siepex/src/eventos/minicursos/minicursoDetalhes.dart';
 import 'package:siepex/src/eventos/visitas/visitasDetalhes.dart';
 
 class VisitasCard extends StatelessWidget {
   final Visita visita;
-  const VisitasCard({Key key, this.visita}) : super(key: key);
+  final bool cadastra;
+  const VisitasCard({Key key, this.visita, this.cadastra = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class VisitasCard extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) => VisitasDetalhes(
                           visita: visita,
+                          cadastra: cadastra,
                         )));
           },
           child: Card(

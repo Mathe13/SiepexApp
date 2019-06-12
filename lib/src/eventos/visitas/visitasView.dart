@@ -63,13 +63,15 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
   @override
   Widget build(BuildContext context) {
     print(viewVisitas);
-    if ((viewVisitas == null || viewVisitas.length == 0) /* && !falha*/) {
+    if ((viewVisitas == null) /* && !falha*/) {
       return Container(
         child: SpinKitPouringHourglass(
           color: Colors.blueAccent,
           size: 200,
         ),
       );
+    } else if (viewVisitas.length == 0) {
+      return Text("nada a ser exibido");
     } else {
       List<Widget> widgetVisitas = [];
       String saida = '0';
@@ -78,7 +80,13 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
           widgetVisitas.add(linhaHora(hora: visita['saida']));
           saida = visita['saida'];
         }
-        widgetVisitas.add(VisitasCard(visita: new Visita.fromJson(visita)));
+        widget.total
+            ? widgetVisitas
+                .add(VisitasCard(visita: new Visita.fromJson(visita)))
+            : widgetVisitas.add(VisitasCard(
+                visita: new Visita.fromJson(visita),
+                cadastra: false,
+              ));
       });
       return Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),

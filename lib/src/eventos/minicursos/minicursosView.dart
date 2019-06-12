@@ -63,13 +63,15 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
   @override
   Widget build(BuildContext context) {
     print(viewMinicursos);
-    if ((viewMinicursos == null || viewMinicursos.length == 0) /* && !falha*/) {
+    if ((viewMinicursos == null) /* && !falha*/) {
       return Container(
         child: SpinKitPouringHourglass(
           color: Colors.blueAccent,
           size: 200,
         ),
       );
+    } else if (viewMinicursos.length == 0) {
+      return Text("nada a ser exibido");
     } else {
       List<Widget> widgetMinicursos = [];
       String inicio = '0';
@@ -78,8 +80,10 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
           widgetMinicursos.add(linhaHora(hora: minicurso['inicio']));
           inicio = minicurso['inicio'];
         }
-        widgetMinicursos
-            .add(MinicursoCard(minicurso: Minicurso().fromJson(minicurso)));
+        widgetMinicursos.add(MinicursoCard(
+          minicurso: Minicurso().fromJson(minicurso),
+          cadastro: widget.total,
+        ));
       });
       return Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
