@@ -20,6 +20,7 @@ class InicioPage extends StatelessWidget {
   Widget corpo(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 10,
           title: Text('Inicio'),
         ),
         drawer: HomeParticipante(),

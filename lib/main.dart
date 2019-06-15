@@ -53,9 +53,9 @@ class MyApp extends StatelessWidget {
         primaryTextTheme: Typography(platform: TargetPlatform.iOS).white,
         textTheme: Typography(platform: TargetPlatform.iOS).white,
         // backgroundColor: Colors.green[30],
-        // pageTransitionsTheme: PageTransitionsTheme(builders: {
-        //   TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-        // }),
+        pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        }),
       ),
       // home: TabsPage(),
     );

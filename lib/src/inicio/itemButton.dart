@@ -23,7 +23,10 @@ Widget itemButton(GridItem item, BuildContext context,
         width: PercentageHelper.width(30, context),
         padding: EdgeInsets.all(3),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            boxShadow: [
+              BoxShadow(color: Colors.black54, spreadRadius: 0.8, blurRadius: 2)
+            ],
+            // border: Border.all(color: Colors.black),
             color: Color(0xff249FAB),
             borderRadius: BorderRadius.circular(20)),
         child: Column(

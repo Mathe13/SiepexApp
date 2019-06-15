@@ -73,7 +73,9 @@ class _ListagemMinicursosState extends State<ListagemMinicursos> {
     print(viewMinicursos);
     if (carregou == false) {
       return Container(
-        child: SpinKitPouringHourglass(
+        //pourinhourglass
+        //fadingfour
+        child: SpinKitWave(
           color: Colors.blueAccent,
           size: 200,
         ),

@@ -91,11 +91,12 @@ class InfoPage extends StatelessWidget {
             }
           },
           child: Container(
-              // height: PercentageHelper.height(17, context),
-              // width: PercentageHelper.width(35, context),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black54, spreadRadius: 0.8, blurRadius: 2)
+                  ],
                   color: Color(0xff249FAB),
                   borderRadius: BorderRadius.circular(20)),
               child: Column(

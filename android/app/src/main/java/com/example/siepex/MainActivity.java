@@ -1,4 +1,4 @@
-package com.example.siepex;
+package br.edu.uergs.siepexApp;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

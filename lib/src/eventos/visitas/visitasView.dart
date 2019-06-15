@@ -73,7 +73,7 @@ class _ListagemVisitasState extends State<ListagemVisitas> {
     print(viewVisitas);
     if (carregou == false) {
       return Container(
-        child: SpinKitPouringHourglass(
+        child: SpinKitWave(
           color: Colors.blueAccent,
           size: 200,
         ),
