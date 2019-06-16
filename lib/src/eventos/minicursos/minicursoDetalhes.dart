@@ -149,6 +149,29 @@ class MinicursoDetalhes extends StatelessWidget {
                               color: Color(0xff2595A6),
                               onPressed: () {
                                 Participante.getStorage().then((participante) {
+                                  if(participante==false){
+                                      Alert(
+                                        context: context,
+                                        type: AlertType.warning,
+                                        title: "Aviso",
+                                        desc: "É preciso fazer login para prosseguir",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "Ok",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () 
+                                                {Navigator.pop(context);
+                                                Navigator.pushNamed(context, "login");},
+                                            width: 120,
+                                          )
+                                        ],
+                                      ).show();
+                                      return;
+                                  }
                                   http.put(
                                       baseUrl +
                                           "minicursos/${minicurso.id}/cadastrar",

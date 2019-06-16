@@ -6,15 +6,14 @@ import 'package:siepex/src/config.dart';
 import 'package:siepex/src/inicio/inicio.dart';
 import 'package:siepex/src/input.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-MaskedTextController cpf = MaskedTextController(mask: "000.000.000-00");
 TextEditingController senha = TextEditingController();
-bool _errCpf = false, _errSenha = false;
+TextEditingController senha2 = TextEditingController();
+bool _errSenha2 = false, _errSenha = false;
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
+class MudaSenhaPage extends StatelessWidget {
+  const MudaSenhaPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      "Login",
+                      "Alteração de senha",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
@@ -58,7 +57,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.symmetric(vertical: 5.0)),
                     Text(
-                      "Introduza seu número de celular e senha",
+                      "Insira sua nova senha nos campos abaixo",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
@@ -66,21 +65,20 @@ class LoginPage extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.symmetric(vertical: 10)),
                     OutlineInput(
-                      label: 'Digite seu cpf',
-                      cpfCnpj: true,
-                      type: "numero",
-                      err: _errCpf,
-                      controller: cpf,
-                      hint: 'Digite o cpf associado a sua conta',
+                      label: 'Digite a nova senha',
+                      err: _errSenha2,
+                      type: "senha",
+                      // hint: 'a senha padrão é o seu cpf',
+                      controller: senha2,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                     ),
                     OutlineInput(
-                      label: 'Digite sua senha',
+                      label: 'Confirme a nova senha',
                       err: _errSenha,
                       type: "senha",
-                      hint: 'a senha padrão é 123',
+                      // hint: 'a senha padrão é o seu cpf',
                       controller: senha,
                     ),
                     Padding(
@@ -91,12 +89,13 @@ class LoginPage extends StatelessWidget {
                       child: RaisedButton(
                         padding: EdgeInsets.symmetric(vertical: 13.0),
                         child: Text(
-                          "ENTRAR",
+                          "Mudar",
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         ),
                         color: Color(0xff2595A6),
-                        onPressed: () => {logar(cpf.text, senha.text, context)},
+                        onPressed: () =>
+                            {mudasenha(senha2.text, senha.text, context)},
                       ),
                     )
                   ],
@@ -107,46 +106,99 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  logar(String cpf, String senha, BuildContext context) async {
-    print("login");
-    cpf = (cpf.replaceAll(".", "")).replaceAll("-", "");
-    print(cpf);
-    print(senha);
-
-    try {
-      var resposta = jsonDecode(
-          (await http.get(baseUrl + 'participante/$cpf/login?senha=$senha'))
-              .body);
-      if (resposta['erro'] != null) {
+  mudasenha(String senha2, String senha, BuildContext context) async {
+    Participante.getStorage().then((participante) async {
+      if (participante == false) {
         Alert(
           context: context,
-          type: AlertType.error,
-          title: "Erro",
-          desc: resposta['erro'],
+          type: AlertType.warning,
+          title: "Aviso",
+          desc: "É preciso fazer login para prosseguir",
           buttons: [
             DialogButton(
               child: Text(
                 "Ok",
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "login");
+              },
+              width: 120,
+            )
+          ],
+        ).show();
+        return;
+      }
+      if (senha != senha2) {
+        Alert(
+          context: context,
+          type: AlertType.warning,
+          title: "Aviso",
+          desc: "Suas senhas não combinam",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "Ok",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                // Navigator.pushNamed(context, "login");
+              },
+              width: 120,
+            )
+          ],
+        ).show();
+        return;
+      }
+
+      var resposta = jsonDecode((await http.put(
+              baseUrl + "participante/" + participante.id,
+              body: {"senha": senha}))
+          .body);
+      print(resposta);
+      if (1 == null) {
+        Alert(
+          context: context,
+          type: AlertType.warning,
+          title: "Erro",
+          desc: "Desculpe mas ocorreu um erro",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "Ok",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                // Navigator.pushNamed(context, "login");
+              },
               width: 120,
             )
           ],
         ).show();
       } else {
-        var user = new Participante();
-        user.fromJson(resposta);
-        user.setStorage();
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => InicioPage()),
-          ModalRoute.withName('tabs'),
-        );
+        Alert(
+          context: context,
+          type: AlertType.success,
+          title: "Sucesso",
+          desc: "Senha alterada",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "Ok",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                // Navigator.pushNamed(context, "login");
+              },
+              width: 120,
+            )
+          ],
+        ).show();
       }
-      // print(storage.getItem("user"));
-    } catch (e) {
-      print(e);
-      Alert(context: context, title: "Erro", desc: "Falha no Login").show();
-    }
+    });
   }
 }

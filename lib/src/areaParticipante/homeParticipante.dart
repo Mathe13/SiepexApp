@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siepex/mdi.dart';
 import 'package:siepex/models/participante.dart';
-import 'package:siepex/src/config.dart';
 import 'package:siepex/src/login/login.dart';
 
 class HomeParticipante extends StatefulWidget {
@@ -110,12 +108,13 @@ class HomeParticipanteState extends State<HomeParticipante>
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  item('Escanear Presença', 'qr',
-                                      Icons.camera_enhance),
-                                  item('Alimentação', 'alimentacao',
-                                      Icons.fastfood),
+                                  // item('Escanear Presença', 'qr',
+                                  //     Icons.camera_enhance),
+                                  // item('Alimentação', 'alimentacao',
+                                  //     Icons.fastfood),
                                   item('Minha Agenda', 'meuseventos',
                                       Icons.calendar_today),
+                                  item('Mudar Senha', 'mudasenha', Icons.lock),
                                 ]),
                           ),
                           SlideTransition(

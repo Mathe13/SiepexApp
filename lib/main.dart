@@ -3,6 +3,7 @@ import 'package:siepex/src/agenda/agenda.dart';
 import 'package:siepex/src/areaParticipante/alimentacao/alimentacao.dart';
 import 'package:siepex/src/areaParticipante/homeParticipante.dart';
 import 'package:siepex/src/areaParticipante/meusEventos/meusEventos.dart';
+import 'package:siepex/src/areaParticipante/mudasenha.dart';
 import 'package:siepex/src/areaParticipante/qr.dart';
 import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/eventos/minicursos/minicursos.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         "minicursos": (BuildContext context) => MinicursosPage(),
         "visitas": (BuildContext context) => VisitasPage(),
         "meuseventos": (BuildContext context) => MeusEventosPage(),
+        "mudasenha":(BuildContext context)=>MudaSenhaPage(),
       },
       title: 'Siepex App',
       theme: ThemeData(
