@@ -24,10 +24,10 @@ class _EventosPageState extends State<EventosPage> {
                     fit: BoxFit.fill)),
             child: ListView(
               children: <Widget>[
-                eventoBanner('Geral'),
+                eventoBanner('Geral', url: 'geral'),
                 eventoBanner('Minicursos', url: "minicursos"),
                 eventoBanner('Visitas Técnicas', url: 'visitas'),
-                eventoBanner('Científica'),
+                // eventoBanner('Científica'),
               ],
             )),
       ),

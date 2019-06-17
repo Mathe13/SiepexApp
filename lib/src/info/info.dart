@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:siepex/mdi.dart';
-import 'package:siepex/utils/percentage_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class InfoPage extends StatelessWidget {

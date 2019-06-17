@@ -1,12 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siepex/src/areaParticipante/homeParticipante.dart';
-import 'package:siepex/src/config.dart';
 import 'package:siepex/src/inicio/itemButton.dart';
 import 'package:siepex/mdi.dart';
-import 'package:http/http.dart' as http;
 
 class InicioPage extends StatelessWidget {
   final Widget child;
@@ -46,14 +41,23 @@ class InicioPage extends StatelessWidget {
                     itemButton(
                         new GridItem(
                             'Programação', 'eventos', Icons.calendar_today),
-                        context),
+                        context,
+                        expanded: false),
                     itemButton(
                         new GridItem('Sobre o Siepex', 'sobre', Icons.info),
-                        context),
+                        context,
+                        expanded: false),
+                    // itemButton(
+                    //     new GridItem(
+                    //         'Apresentado
                     itemButton(
                         new GridItem(
-                            'Apresentadores', 'palestrantes', Icons.group),
-                        context)
+                          'Avisos',
+                          'avisos',
+                          Icons.warning,
+                        ),
+                        context,
+                        expanded: false)
                   ],
                 ),
                 Padding(
@@ -62,15 +66,18 @@ class InicioPage extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     itemButton(
-                        new GridItem('Hoteis', 'hoteis', Icons.map), context),
+                        new GridItem('Hoteis', 'hoteis', Icons.map), context,
+                        expanded: false),
                     itemButton(
                         new GridItem(
                             'Restaurantes', 'restaurantes', Icons.fastfood),
-                        context),
+                        context,
+                        expanded: false),
                     itemButton(
                         new GridItem(
-                            'Informações úteis', 'info', Icons.warning),
-                        context)
+                            'Informações úteis', 'info', Icons.new_releases),
+                        context,
+                        expanded: false)
                   ],
                 ),
                 Padding(
@@ -81,15 +88,18 @@ class InicioPage extends StatelessWidget {
                     itemButton(
                         new GridItem('Comissão Organizadora', '404',
                             Icons.business_center),
-                        context),
+                        context,
+                        expanded: false),
                     itemButton(
                         new GridItem('Área do Participante', 'homeParticipante',
                             Icons.assignment_ind),
-                        context),
+                        context,
+                        expanded: false),
                     itemButton(
                         new GridItem(
                             'Mapa do evento', 'MapaEvento', Mdi.map_marker),
-                        context)
+                        context,
+                        expanded: false)
                   ],
                 )
               ],

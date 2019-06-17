@@ -20,7 +20,7 @@ Widget itemButton(GridItem item, BuildContext context,
     },
     child: Container(
         height: PercentageHelper.height(15, context),
-        width: PercentageHelper.width(30, context),
+        width: PercentageHelper.width(25, context),
         padding: EdgeInsets.all(3),
         decoration: BoxDecoration(
             boxShadow: [
