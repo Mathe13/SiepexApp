@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:siepex/models/participante.dart';
 import 'package:siepex/src/config.dart';
 import 'package:siepex/src/inicio/inicio.dart';
@@ -80,7 +81,7 @@ class LoginPage extends StatelessWidget {
                       label: 'Digite sua senha',
                       err: _errSenha,
                       type: "senha",
-                      hint: 'a senha padrão é 123',
+                      hint: '3 primeiros do cpf + os 2 primeiros do rg',
                       controller: senha,
                     ),
                     Padding(

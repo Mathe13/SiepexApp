@@ -3,11 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
-import 'package:siepex/models/minicurso.dart';
 import 'package:siepex/models/participante.dart';
 import 'package:siepex/models/visitas.dart';
 import 'package:siepex/src/config.dart';
-import 'package:siepex/src/eventos/minicursos/minicursoCard.dart';
 import 'package:siepex/src/eventos/visitas/visitasCard.dart';
 import 'package:siepex/src/eventos/widgets/widgets.dart';
 

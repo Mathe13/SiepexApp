@@ -9,14 +9,14 @@ class VisitasPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Visitas Técnicas 26/06"),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                print('pesquisa');
-              },
-            )
-          ],
+          // actions: <Widget>[
+          //   IconButton(
+          //     icon: Icon(Icons.search),
+          //     onPressed: () {
+          //       print('pesquisa');
+          //     },
+          //   )
+          // ],
         ),
         body: Container(
             decoration: BoxDecoration(

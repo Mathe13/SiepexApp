@@ -12,14 +12,14 @@ class GeralPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text('Agenda do evento'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  print('pesquisa');
-                },
-              )
-            ],
+            // actions: <Widget>[
+            //   IconButton(
+            //     icon: Icon(Icons.search),
+            //     onPressed: () {
+            //       print('pesquisa');
+            //     },
+            //   )
+            // ],
             bottom: tabs(),
           ),
           body: Container(

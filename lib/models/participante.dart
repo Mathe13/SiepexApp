@@ -123,8 +123,6 @@ class Participante {
 
   /// Recebe um Objeto do Usuario e grava key e value localmente
   Future setStorage() async {
-    // print("object");
-    // this.printUser();
     Map<String, dynamic> map = this.toJson();
     List<String> value = [], key = [];
     map.forEach((k, v) {
@@ -147,7 +145,6 @@ class Participante {
   /// Não recebe nenhum parâmentro e retorna um Objeto do Usuario gravado localmente
   static Future getStorage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // return 0;
     List<String> key = prefs.getStringList('userKey');
     List<String> value = prefs.getStringList('userValue');
     Map map = {};

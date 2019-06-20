@@ -12,14 +12,13 @@ class MeusEventosPage extends StatefulWidget {
 class _MeusEventosPageState extends State<MeusEventosPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 4,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             title: Text('Meus Eventos'),
