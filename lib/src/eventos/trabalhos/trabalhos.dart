@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:siepex/src/eventos/geral/geralView.dart';
+import 'package:siepex/src/eventos/trabalhos/trabalhosView.dart';
 
-class GeralPage extends StatelessWidget {
-  const GeralPage({Key key}) : super(key: key);
+class TrabalhosPage extends StatelessWidget {
+  const TrabalhosPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +11,7 @@ class GeralPage extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Agenda do evento'),
+            title: Text('Trabalhos 28/06'),
             bottom: tabs(),
           ),
           body: Container(
@@ -21,9 +22,15 @@ class GeralPage extends StatelessWidget {
                       fit: BoxFit.cover)),
               child: TabBarView(
                 children: <Widget>[
-                  ListagemGeral(dia: "26/06/2019"),
-                  ListagemGeral(dia: "27/06/2019"),
-                  ListagemGeral(dia: "28/06/2019"),
+                  ListagemTrabalhos(
+                    area: "CIÊNCIAS EXATAS",
+                  ),
+                  ListagemTrabalhos(
+                    area: "CIÊNCIAS HUMANAS",
+                  ),
+                  ListagemTrabalhos(
+                    area: "CIÊNCIAS DA VIDA E DO MEIO AMBIENTE",
+                  ),
                 ],
               )),
         ));
@@ -31,9 +38,9 @@ class GeralPage extends StatelessWidget {
 
   Widget tabs() {
     return TabBar(indicatorColor: Colors.white, tabs: [
-      Tab(child: Text("26/06")),
-      Tab(child: Text("27/06")),
-      Tab(child: Text("28/06"))
+      Tab(child: Text("Exatas")),
+      Tab(child: Text("Humanas")),
+      Tab(child: Text("Vida/Meio Ambiente"))
     ]);
   }
 }

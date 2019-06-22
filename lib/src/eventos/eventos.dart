@@ -27,7 +27,7 @@ class _EventosPageState extends State<EventosPage> {
                 eventoBanner('Geral', url: 'geral'),
                 eventoBanner('Minicursos', url: "minicursos"),
                 eventoBanner('Visitas Técnicas', url: 'visitas'),
-                // eventoBanner('Científica'),
+                eventoBanner('Trabalhos', url: 'trabalhos'),
               ],
             )),
       ),

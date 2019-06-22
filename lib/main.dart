@@ -9,6 +9,7 @@ import 'package:siepex/src/comissao/comissao.dart';
 import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/eventos/geral/geral.dart';
 import 'package:siepex/src/eventos/minicursos/minicursos.dart';
+import 'package:siepex/src/eventos/trabalhos/trabalhos.dart';
 import 'package:siepex/src/eventos/visitas/visitas.dart';
 import 'package:siepex/src/hoteis/hoteis.dart';
 import 'package:siepex/src/info/avisos.dart';
@@ -24,6 +25,7 @@ import 'package:siepex/src/tabs/tabs.dart';
 
 void main() => runApp(MyApp());
 
+// flutter build --build-number=x --build-name=y
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
         "avisos": (BuildContext context) => AvisosPage(),
         "geral": (BuildContext context) => GeralPage(),
         "comissao": (BuildContext context) => ComissaoPage(),
+        "trabalhos": (BuildContext context) => TrabalhosPage()
       },
       title: 'Siepex App',
       theme: ThemeData(
