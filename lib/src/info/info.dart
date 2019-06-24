@@ -31,9 +31,9 @@ class InfoPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    itemButton('Bombeiros', Mdi.fire_truck, 'tel:513327-2132'),
+                    itemButton('Bombeiros', Mdi.fire_truck, 'tel:192'),
                     itemButton('Policia', Mdi.security, 'tel:190'),
-                    itemButton('Samu', Mdi.hospital, 'tel:5132892541')
+                    itemButton('Samu', Mdi.hospital, 'tel:192')
                   ],
                 ),
                 Padding(
@@ -49,6 +49,7 @@ class InfoPage extends StatelessWidget {
                         'http://trensurb.gov.br/paginas/paginas_detalhe.php?codigo_sitemap=18'),
                     itemButton('Ônibus', Mdi.bus_side,
                         'http://www2.portoalegre.rs.gov.br/eptc/default.php?p_secao=158'),
+                    // 'https://uergs.edu.br/upload/arquivos/201906/19111659-horarios-e-rotas-internas-onibus-9o-siepex.pdf'),
                     itemButton('Rodoviaria', Mdi.bus_articulated_front,
                         'http://www.rodoviaria-poa.com.br/inicio.php')
                   ],

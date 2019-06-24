@@ -9,7 +9,7 @@ import 'package:siepex/src/comissao/comissao.dart';
 import 'package:siepex/src/eventos/eventos.dart';
 import 'package:siepex/src/eventos/geral/geral.dart';
 import 'package:siepex/src/eventos/minicursos/minicursos.dart';
-import 'package:siepex/src/eventos/trabalhos/trabalhos.dart';
+import 'package:siepex/src/eventos/trabalhos/Trabalhos.dart';
 import 'package:siepex/src/eventos/visitas/visitas.dart';
 import 'package:siepex/src/hoteis/hoteis.dart';
 import 'package:siepex/src/info/avisos.dart';

@@ -24,7 +24,8 @@ class Visita {
     } else {
       String retorno = '';
       this.tblLocaisVisitas.forEach((f) {
-        retorno += f.local + "\n";
+        retorno +=
+            f.local + ((f.custo != '') ? " custo:" + f.custo : '') + "\n";
       });
       return retorno;
     }

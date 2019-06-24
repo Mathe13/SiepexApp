@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:siepex/src/eventos/geral/geralView.dart';
-import 'package:siepex/src/eventos/trabalhos/trabalhosView.dart';
+import 'package:siepex/src/eventos/trabalhos/trabalhosDia.dart';
 
 class TrabalhosPage extends StatelessWidget {
   const TrabalhosPage({Key key}) : super(key: key);
@@ -8,10 +7,10 @@ class TrabalhosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Trabalhos 28/06'),
+            title: Text('Trabalhos '),
             bottom: tabs(),
           ),
           body: Container(
@@ -22,15 +21,8 @@ class TrabalhosPage extends StatelessWidget {
                       fit: BoxFit.cover)),
               child: TabBarView(
                 children: <Widget>[
-                  ListagemTrabalhos(
-                    area: "CIÊNCIAS EXATAS",
-                  ),
-                  ListagemTrabalhos(
-                    area: "CIÊNCIAS HUMANAS",
-                  ),
-                  ListagemTrabalhos(
-                    area: "CIÊNCIAS DA VIDA E DO MEIO AMBIENTE",
-                  ),
+                  TrabalhosDiaPage(dia: "27/06/2019"),
+                  TrabalhosDiaPage(dia: "28/06/2019")
                 ],
               )),
         ));
@@ -38,9 +30,8 @@ class TrabalhosPage extends StatelessWidget {
 
   Widget tabs() {
     return TabBar(indicatorColor: Colors.white, tabs: [
-      Tab(child: Text("Exatas")),
-      Tab(child: Text("Humanas")),
-      Tab(child: Text("Vida/Meio Ambiente"))
+      Tab(child: Text("27/06")),
+      Tab(child: Text("28/06")),
     ]);
   }
 }

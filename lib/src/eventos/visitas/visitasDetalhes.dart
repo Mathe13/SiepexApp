@@ -126,28 +126,31 @@ class VisitasDetalhes extends StatelessWidget {
                               color: Color(0xff2595A6),
                               onPressed: () {
                                 Participante.getStorage().then((participante) {
-                                                                    if(participante==false){
-                                      Alert(
-                                        context: context,
-                                        type: AlertType.warning,
-                                        title: "Aviso",
-                                        desc: "É preciso fazer login para prosseguir",
-                                        buttons: [
-                                          DialogButton(
-                                            child: Text(
-                                              "Ok",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20),
-                                            ),
-                                            onPressed: () 
-                                                {Navigator.pop(context);
-                                                Navigator.pushNamed(context, "login");},
-                                            width: 120,
-                                          )
-                                        ],
-                                      ).show();
-                                      return;
+                                  if (participante == false) {
+                                    Alert(
+                                      context: context,
+                                      type: AlertType.warning,
+                                      title: "Aviso",
+                                      desc:
+                                          "É preciso fazer login para prosseguir",
+                                      buttons: [
+                                        DialogButton(
+                                          child: Text(
+                                            "Ok",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            Navigator.pushNamed(
+                                                context, "login");
+                                          },
+                                          width: 120,
+                                        )
+                                      ],
+                                    ).show();
+                                    return;
                                   }
                                   http.put(
                                       baseUrl +
@@ -176,13 +179,12 @@ class VisitasDetalhes extends StatelessWidget {
                                           )
                                         ],
                                       ).show();
-                                    } else if (resposta['status'] ==
-                                        "falha, já ocupado") {
+                                    } else if (resposta['status'] != null) {
                                       Alert(
                                         context: context,
                                         type: AlertType.warning,
                                         title: "Falha",
-                                        desc: "Parece que voce está ocupado",
+                                        desc: resposta['status'].toString(),
                                         buttons: [
                                           DialogButton(
                                             child: Text(
@@ -414,7 +416,7 @@ class VisitasDetalhes extends StatelessWidget {
                                 image: new DecorationImage(
                                     fit: BoxFit.cover,
                                     image: new NetworkImage(
-                                        "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
+                                        "https://avatars1.githubusercontent.com/u/29609021?s=400&u=24a2c965697b52e2697feb03ec808aa9b1b32443&v=4")))),
                       ],
                     )),
                 Expanded(

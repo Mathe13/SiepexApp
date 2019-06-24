@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AvisosPage extends StatelessWidget {
   final Widget child;
@@ -59,6 +61,41 @@ Telefone:(51) 3348.2051"""),
                       ),
                       subtitle:
                           Text("""É proibido som alto após as 21 horas"""),
+                    )),
+                AnnotatedRegion<SystemUiOverlayStyle>(
+                    value: SystemUiOverlayStyle.dark,
+                    child: ListTile(
+                      title: Text(
+                        "Deslocamento:",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                      subtitle: Opacity(
+                          opacity: 0.7,
+                          child: RichText(
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text:
+                                    "Os horários do deslocamento entre alojamento e unidade pode ser encontrado ",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                              TextSpan(
+                                text: "clicando aqui",
+                                recognizer: new TapGestureRecognizer()
+                                  ..onTap = () {
+                                    print("oi");
+                                    launch(
+                                        'https://uergs.edu.br/upload/arquivos/201906/19111659-horarios-e-rotas-internas-onibus-9o-siepex.pdf');
+                                  },
+                                style: new TextStyle(
+                                    color: Colors.black54,
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ]),
+                          )),
                     )),
                 // ListTile(
                 //     title: Text.rich(TextSpan(

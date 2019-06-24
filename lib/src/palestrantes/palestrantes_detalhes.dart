@@ -46,7 +46,7 @@ class _PaletranteDetalhesPageState extends State<PaletranteDetalhesPage> {
                               image: new DecorationImage(
                                   fit: BoxFit.cover,
                                   image: new NetworkImage(
-                                      "https://avatars0.githubusercontent.com/u/29609021?s=400&u=be91d738c1796c1f523b5c630c1359956d170ccb&v=4")))),
+                                      "https://avatars1.githubusercontent.com/u/29609021?s=400&u=24a2c965697b52e2697feb03ec808aa9b1b32443&v=4")))),
                       DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
