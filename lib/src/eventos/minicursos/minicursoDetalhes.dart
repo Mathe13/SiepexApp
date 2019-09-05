@@ -202,13 +202,12 @@ class MinicursoDetalhes extends StatelessWidget {
                                           )
                                         ],
                                       ).show();
-                                    } else if (resposta['status'] ==
-                                        "falha, já ocupado") {
+                                    } else if (resposta['status'] != null) {
                                       Alert(
                                         context: context,
                                         type: AlertType.warning,
                                         title: "Falha",
-                                        desc: "Parece que voce está ocupado",
+                                        desc: resposta['status'],
                                         buttons: [
                                           DialogButton(
                                             child: Text(

@@ -31,7 +31,7 @@ class InfoPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    itemButton('Bombeiros', Mdi.fire_truck, 'tel:192'),
+                    itemButton('Bombeiros', Mdi.fire_truck, 'tel:193'),
                     itemButton('Policia', Mdi.security, 'tel:190'),
                     itemButton('Samu', Mdi.hospital, 'tel:192')
                   ],

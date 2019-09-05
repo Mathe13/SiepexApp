@@ -35,7 +35,7 @@ dev_dependencies:
   rflutter_alert: ^1.0.2
   material_design_icons_flutter: ^3.2.3595
   flutter_webview_plugin: 0.3.3
-  extended_image : ^0.3.8
+  extended_image : ^0.5.6
 
   flutter_test:
     sdk: flutter

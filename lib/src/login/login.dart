@@ -59,7 +59,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.symmetric(vertical: 5.0)),
                     Text(
-                      "Introduza seu número de celular e senha",
+                      "Preencha os campos abaixo para logar",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
